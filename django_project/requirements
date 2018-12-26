@@ -1,0 +1,7 @@
+django>=1.9.0
+django-rest-auth==0.9.3
+djangorestframework>=3.7.0
+django-allauth>=0.24.1
+six==1.9.0
+psycopg2==2.7.3
+django-filter==2.0.0
