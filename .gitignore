@@ -5,3 +5,6 @@ django_project/.idea
 /.idea
 /django_project/locale/en/LC_MESSAGES/django.mo
 /django_project/locale/ru/LC_MESSAGES/django.mo
+/django_project/venv/
+/docker-compose.yml
+
