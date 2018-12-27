@@ -2,7 +2,6 @@
 {% load static %}
 {% load i18n %}
     <script src="{% static "js/jquery.min.js" %}"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% block content %}
     <div id="registration" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
     <h1>{% trans "Регистрация" %}</h1>
@@ -43,7 +42,7 @@
                 type: $(this).attr('method'),
                 dataType: 'json',
                 success: function () {
-                    document.location.href = url.replace('registration/', '/');
+                    document.location.href = url.replace('registration/', 'lk/');
                 },
                 error: function (data) {
                     $("#form-errors").html(JSON.parse(data.responseText)['form']['__all__'][0]);

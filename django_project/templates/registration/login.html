@@ -1,7 +1,6 @@
 {% extends "home.html" %}
 {% load static %}
 {% load i18n %}
-    <script src="{% static "js/script.js" %}"></script>
     <script src="{% static "js/jquery.min.js" %}"></script>
 {% block content %}
     <div id="login" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
@@ -42,7 +41,7 @@
                 type: $(this).attr('method'),
                 dataType: 'html',
                 success: function () {
-                    document.location.href = url.replace('login/', 'accesses/');
+                    document.location.href = url.replace('login/', 'lk/');
                 },
                 error: function (data) {
                     $("#form-errors").html(JSON.parse(data.responseText)['form']['__all__'][0]);

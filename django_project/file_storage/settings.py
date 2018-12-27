@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
 ]
 SITE_ID = 1
-
+LOGIN_REDIRECT_URL = '/lk'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
