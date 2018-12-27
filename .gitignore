@@ -7,4 +7,4 @@ django_project/.idea
 /django_project/locale/ru/LC_MESSAGES/django.mo
 /django_project/venv/
 /docker-compose.yml
-
+!/django_project/file_storage/settings.py

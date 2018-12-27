@@ -1,6 +1,5 @@
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.views import auth_login
 from django.contrib.auth import authenticate, login
@@ -21,13 +20,13 @@ class AjaxRegistrationMixin(object):
             username=validated_data['username'],
             email=validated_data['email']
         )
-        # user.groups.add(Group.objects.get(name='clients'))
         user.set_password(validated_data['password'])
         user.save()
         Token.objects.create(user=user)
-        user_auth = authenticate(username = validated_data['username'],
-                               password = validated_data['password']
-                               )
+        user_auth = authenticate(
+            username=validated_data['username'],
+            password=validated_data['password']
+        )
         login(self.request, user_auth)
         auth_login(self.request, user_auth)
 

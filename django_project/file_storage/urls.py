@@ -18,7 +18,8 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from app.views import (HomePageView, LoginView,
-                       logout_user, RegisterView
+                       logout_user, RegisterView,
+                       PersonalArea
                        )
 
 urlpatterns = [
@@ -27,7 +28,7 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout$', logout_user, name='logout'),
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
-
+    url(r'^lk/$', PersonalArea.as_view(), name='lk'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
     url(r'^user/password/reset/$', auth_views.PasswordResetView.as_view(),
