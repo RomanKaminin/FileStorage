@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+    <main class="main slow-view" style="margin-top: 30px;">
+        <div class="container">
+            <div class="admin-datalist-page">
+                <div class="view-buttons" style="margin-top: 0px;">
+                    <a class="btn btn-primary-send float-l rates__btn">{% trans "Ваши файлы" %}</a>
+                    <a style="margin-right: 0px;" href="{% url 'add-file' %}" class="btn btn-primary float-r btn--font-weight">{% trans "+ Добавить файл" %}</a>
+                </div>
+                <div class="table">
+                    <div class="row header">
+                        <ul>
+
+                            <li><a href="#0">{% trans "Файл" %}</a></li>
+                            <li><a href="#0">{% trans "Публичная ссылка" %}</a></li>
+                            <li><a href="#0">{% trans "Дата загрузки" %}</a></li>
+                            <li><a href="#0">{% trans "Действия" %}</a></li>
+
+                        </ul>
+                    </div>
+                    <div id="tableRows">
+                        {% for file in page_objects %}
+                            <div class="row">
+                                <ul>
+                                    <li>{{ file.title }}</li>
+                                    <li></li>
+                                    <li>{{ file.date|date:"d M Y" }}</li>
+                                    <li> <a href="{{ file.file_link }}" class="btn btn-blue btn-small">Скачать</a></li>
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="table-footer">
+                   <div class="pagination">
+                        <ul class=pagination-list>
+                          {% if page_objects.has_previous %}
+                            <li style="float: inline-start;">
+                              <a href="?page={{ page_objects.previous_page_number }}" class="btn btn-gray prev-btn"></a>
+                            </li>
+                          {% endif %}
+                          {% for i in paginator.page_range%}
+                              {% if page_objects.number == i %}
+                              <li style="float: inline-start;">
+                              <a  class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
+                              {% else %}
+                              <a  class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
+                              {% endif %}
+                            </li>
+                          {% endfor %}
+                          {% if page_objects.has_next %}
+                            <li>
+                              <a href="?page={{ page_objects.next_page_number }}" class="btn btn-gray next-btn"></a>
+                            </li>
+                          {% endif %}
+                        </ul>
+                   </div><!-- .pagination -->
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+

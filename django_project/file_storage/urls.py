@@ -19,8 +19,10 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from app.views import (HomePageView, LoginView,
                        logout_user, RegisterView,
-                       PersonalArea
+                       PersonalArea, upload,
                        )
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,8 @@ urlpatterns = [
     url(r'^logout$', logout_user, name='logout'),
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
     url(r'^lk/$', PersonalArea.as_view(), name='lk'),
+    url(r'^lk/add_file$', upload, name='add-file'),
+    # url(r'^lk/<int:pk>/$', DeleteFileView.as_view(), name='del-file'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
     url(r'^user/password/reset/$', auth_views.PasswordResetView.as_view(),
@@ -43,3 +47,5 @@ urlpatterns = [
     url(r'^user/password/done/$', auth_views.PasswordResetCompleteView.as_view(),
         name="password_reset_complete"),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -13,11 +13,12 @@
 
 <nav class="menu-container">
     <ul class="menu">
-    <li><a href="{% url 'home' %}">{% trans "Главная" %}</a></li>
+        <li><a href="{% url 'home' %}">{% trans "Главная" %}</a></li>
     {% if not user.is_authenticated %}
-    <li><a href="{% url 'login' %}">{% trans "Войти" %}</a></li>
+        <li><a href="{% url 'login' %}">{% trans "Войти" %}</a></li>
     {% else %}
-    <li><a href="{% url 'logout' %}">{% trans "Выйти" %}</a></li>
+        <li><a href="{% url 'lk' %}">{% trans "Личный кабинет" %}</a></li>
+        <li><a href="{% url 'logout' %}">{% trans "Выйти" %}</a></li>
     {% endif %}
 
   </ul>
