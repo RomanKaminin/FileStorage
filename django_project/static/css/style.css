@@ -329,6 +329,7 @@ input[type="text"]{
     height: 45px;
     padding: 0px 15px;
     margin: auto;
+    margin-left: 0;
 
 }
 

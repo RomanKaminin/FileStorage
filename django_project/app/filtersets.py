@@ -7,10 +7,10 @@ class FileFilter(django_filters.FilterSet):
 
     class Meta:
         model = File
-        fields = ['date',]
+        fields = ['title',]
 
     def __init__(self, *args, **kwargs):
         super(FileFilter, self).__init__(*args, **kwargs)
-        self.filters['date'].label = _("Дата создания")
+        self.filters['title'].label = _("Имя файла")
 
 

@@ -24,7 +24,7 @@ def delete_handler(request, pk):
 
 def download_handler(request, pk):
     upload = get_object_or_404(File, pk=pk)
-    return serve_file(request, upload.file)
+    return public_download_url(request, upload.file)
 
 
 def upload_handler(request):
