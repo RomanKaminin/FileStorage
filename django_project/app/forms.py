@@ -2,6 +2,18 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from .models import File
+
+
+class FileForm(forms.ModelForm):
+    upload_by = forms.IntegerField(widget=forms.HiddenInput(),disabled=True)
+    file_link = forms.CharField(widget=forms.HiddenInput(), disabled=True)
+    title = forms.CharField(widget=forms.HiddenInput(), disabled=True)
+    file = forms.FileField()
+
+    class Meta:
+        fields = ('file', 'upload_by', 'title')
+        model = File
 
 
 class UserRegistrationForm(forms.Form):

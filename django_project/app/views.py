@@ -1,5 +1,3 @@
-import os
-
 from django.views.generic.base import TemplateView
 from .forms import UserRegistrationForm, UserLoginForm
 from django.http import HttpResponseRedirect
@@ -9,51 +7,42 @@ from django.views.generic import ListView, DeleteView, CreateView
 from django.views.generic.edit import FormView
 from .mixin import AjaxRegistrationMixin, AjaxLoginMixin
 from .models import File
+from .forms import FileForm
 from .helpers import paginator_work
 from .filtersets import FileFilter
 from urllib.parse import urlencode
-from django.shortcuts import render, redirect
-from django.core.files.storage import FileSystemStorage
-from django.urls import reverse_lazy
-from django.http import Http404
+from django.shortcuts import render, redirect, get_object_or_404
+from filetransfers.api import prepare_upload, serve_file, public_download_url
 
-def upload(request):
-    context = {}
+
+
+def delete_handler(request, pk):
+    file = File.objects.get(pk=pk)
+    file.delete()
+    return redirect('lk')
+
+
+def download_handler(request, pk):
+    upload = get_object_or_404(File, pk=pk)
+    return serve_file(request, upload.file)
+
+
+def upload_handler(request):
     if request.method == 'POST':
-        uploaded_file = request.FILES['document']
-        fs = FileSystemStorage()
-        name = fs.save(uploaded_file.name, uploaded_file)
-        File.objects.create_file(uploaded_file.name, request.user.id, fs.url(name))
-        context['url'] = fs.url(name)
+        form = FileForm(request.POST, request.FILES)
+        newfile = File(file=request.FILES['file'])
+        upload_url, upload_data = prepare_upload(request, 'add_file')
+        form.fields["upload_by"].initial = request.user.id
+        form.fields["file_link"].initial = upload_url
+        form.fields["title"].initial = newfile.file.name
+        form.save()
         return redirect('lk')
-    else:
-        return render(request, 'upload.html', context)
 
+    upload_url, upload_data = prepare_upload(request, 'add_file')
+    form = FileForm()
+    return render(request, 'upload/upload.html',
+        {'form': form, 'upload_url': upload_url, 'upload_data': upload_data})
 
-# class DeleteFileView(DeleteView):
-#     model = File
-#
-#     def get_object(self, queryset=None):
-#         os.remove(os.path.join(settings.MEDIA_ROOT, self.docfile.name))
-#         obj = super(DeleteFileView, self).get_object()
-#         if not obj.upload_by == self.request.user.id:
-#             raise Http404
-#         return obj
-
-# class UploadFile(CreateView):
-#     model = File
-#     template_name = 'upload.html'
-#     success_url = reverse_lazy('lk')
-#
-#     def post(self, request, *args, **kwargs):
-#         # context = {}
-#         uploaded_file = request.FILES['document']
-#         fs = FileSystemStorage()
-#         name = fs.save(uploaded_file.name, uploaded_file)
-#         self.model.objects.create_file(uploaded_file.name, request.user.id, fs.url(name))
-#         return redirect(self.success_url)
-#         # context['url'] = fs.url(name)
-#         # return redirect('lk')
 
 class HomePageView(TemplateView):
     template_name = "start.html"

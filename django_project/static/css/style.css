@@ -393,3 +393,54 @@ input[type="text"]{
     padding: 20px 20px;
     width: calc(100% - 45px);
 }
+
+.admin-datalist-page .table .row .btn-download {
+
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-clip: padding-box;
+    -webkit-transition: all ease-in .1s;
+    -moz-transition: all ease-in .1s;
+    -o-transition: all ease-in .1s;
+    transition: all ease-in .1s;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #ccc;
+    cursor: pointer;
+    margin-top: -10px;
+
+}
+
+.btn.btn-primary-down {
+    border-radius: 5px;
+    -moz-box-shadow: inset 0 0 0 2px #1b073a;
+    -o-box-shadow: inset 0 0 0 2px #1b073a;
+    background-color: #0c4b89;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.btn.btn-primary-down:hover {
+    color: #0c4b89;
+    background-color: white;
+    -webkit-box-shadow: inset 0 0 0 2px #0c4b89;
+    -moz-box-shadow: inset 0 0 0 2px #0c4b89;
+    -o-box-shadow: inset 0 0 0 2px #0c4b89;
+}
+
+.btn.btn-primary-del {
+    border-radius: 5px;
+    -moz-box-shadow: inset 0 0 0 2px #1b073a;
+    -o-box-shadow: inset 0 0 0 2px #1b073a;
+    background-color: #890007;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.btn.btn-primary-del:hover {
+    color: #890007;
+    background-color: white;
+    -webkit-box-shadow: inset 0 0 0 2px #890007;
+    -moz-box-shadow: inset 0 0 0 2px #890007;
+    -o-box-shadow: inset 0 0 0 2px #890007;
+}

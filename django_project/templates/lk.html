@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load filetransfers %}
 {% load i18n %}
 {% block content %}
     <main class="main slow-view" style="margin-top: 30px;">
@@ -26,7 +27,11 @@
                                     <li>{{ file.title }}</li>
                                     <li></li>
                                     <li>{{ file.date|date:"d M Y" }}</li>
-                                    <li> <a href="{{ file.file_link }}" class="btn btn-blue btn-small">Скачать</a></li>
+                                    <li>
+                                        {% url "down-file" pk=file.id as fallback_url %}
+                                        <a class="btn btn-primary-down btn-small" href="{% firstof file.file|public_download_url  %}">Скачать</a>
+                                        <a class="btn btn-primary-del btn-small" href="{% url 'del-file' file.id %}">Удалить</a>
+                                    </li>
                                 </ul>
                             </div>
                         {% endfor %}

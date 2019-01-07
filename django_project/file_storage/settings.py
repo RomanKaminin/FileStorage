@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'app',
     'django_filters',
+    'filetransfers',
 ]
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/lk'
@@ -73,7 +74,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates/registration')
+            os.path.join(BASE_DIR, 'templates/registration'),
+            os.path.join(BASE_DIR, 'templates/upload'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -98,8 +100,8 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'file_storage',
         'PASSWORD': 'file_storage',
-        'HOST': 'postgres',
-        'PORT': '5432',
+        'HOST': '::',
+        'PORT': '6432',
     }
 }
 
@@ -148,10 +150,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
@@ -167,3 +169,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 FIXTURE_DIRS = (
    os.path.join(BASE_DIR, 'fixtures'),
 )
+
+PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'
+SERVE_FILE_BACKEND = 'filetransfers.backends.default.serve_file'
+PUBLIC_DOWNLOADS_URL_BASE = '/downloads/'
+PUBLIC_DOWNLOAD_URL_BACKEND = 'filetransfers.backends.url.public_download_url'
+

@@ -19,7 +19,8 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from app.views import (HomePageView, LoginView,
                        logout_user, RegisterView,
-                       PersonalArea, upload,
+                       PersonalArea, upload_handler,
+                       download_handler, delete_handler
                        )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,8 +32,10 @@ urlpatterns = [
     url(r'^logout$', logout_user, name='logout'),
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
     url(r'^lk/$', PersonalArea.as_view(), name='lk'),
-    url(r'^lk/add_file$', upload, name='add-file'),
-    # url(r'^lk/<int:pk>/$', DeleteFileView.as_view(), name='del-file'),
+    url(r'^lk/add_file$', upload_handler, name='add-file'),
+    url(r'^lk/(?P<pk>[0-9]+)/$', download_handler, name='down-file'),
+    url(r'^lk/del_file/(?P<pk>[0-9]+)/$', delete_handler, name='del-file'),
+
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
     url(r'^user/password/reset/$', auth_views.PasswordResetView.as_view(),
