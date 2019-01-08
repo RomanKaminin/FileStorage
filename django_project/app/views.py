@@ -12,8 +12,8 @@ from .helpers import paginator_work
 from .filtersets import FileFilter
 from urllib.parse import urlencode
 from django.shortcuts import render, redirect, get_object_or_404
-from filetransfers.api import prepare_upload, serve_file, public_download_url
-
+from filetransfers.api import prepare_upload, public_download_url
+from django.contrib.auth.decorators import login_required
 
 
 def delete_handler(request, pk):
@@ -27,13 +27,14 @@ def download_handler(request, pk):
     return public_download_url(request, upload.file)
 
 
+@login_required(login_url='login')
 def upload_handler(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         newfile = File(file=request.FILES['file'])
         upload_url, upload_data = prepare_upload(request, 'add_file')
         form.fields["upload_by"].initial = request.user.id
-        form.fields["file_link"].initial = upload_url
+        form.fields["public_link"].initial = upload_url
         form.fields["title"].initial = newfile.file.name
         form.save()
         return redirect('lk')

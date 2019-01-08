@@ -7,7 +7,7 @@ from .models import File
 
 class FileForm(forms.ModelForm):
     upload_by = forms.IntegerField(widget=forms.HiddenInput(),disabled=True)
-    file_link = forms.CharField(widget=forms.HiddenInput(), disabled=True)
+    public_link = forms.CharField(widget=forms.HiddenInput(), disabled=True)
     title = forms.CharField(widget=forms.HiddenInput(), disabled=True)
     file = forms.FileField()
 

@@ -20,7 +20,7 @@
                         <ul>
 
                             <li><a href="#0">{% trans "Файл" %}</a></li>
-                            <li><a href="#0">{% trans "Публичная ссылка" %}</a></li>
+{#                            <li><a href="#0">{% trans "Публичная ссылка" %}</a></li>#}
                             <li><a href="#0">{% trans "Дата загрузки" %}</a></li>
                             <li><a href="#0">{% trans "Действия" %}</a></li>
 
@@ -31,7 +31,7 @@
                             <div class="row">
                                 <ul>
                                     <li>{{ file.title }}</li>
-                                    <li></li>
+{#                                    <li></li>#}
                                     <li>{{ file.date|date:"d M Y" }}</li>
                                     <li>
                                         {% url "down-file" pk=file.id as fallback_url %}
