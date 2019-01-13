@@ -62,7 +62,7 @@ html,body {
 .menu-container a:hover,
 .menu-container a:active,
 .menu-container a:focus {
-  transform: scale(1.3) translate(0.1em,0px);
+  transform: scale(1.2) translate(0.1em,0px);
   color: #fafafa;
 }
 
@@ -444,4 +444,38 @@ input[type="text"]{
     -webkit-box-shadow: inset 0 0 0 2px #890007;
     -moz-box-shadow: inset 0 0 0 2px #890007;
     -o-box-shadow: inset 0 0 0 2px #890007;
+}
+
+.btn.btn-primary-pub-cr {
+    border-radius: 5px;
+    -moz-box-shadow: inset 0 0 0 2px #1b073a;
+    -o-box-shadow: inset 0 0 0 2px #1b073a;
+    background-color: #00890d;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.btn.btn-primary-pub-cr:hover {
+    color: #00890d;
+    background-color: white;
+    -webkit-box-shadow: inset 0 0 0 2px #00890d;
+    -moz-box-shadow: inset 0 0 0 2px #00890d;
+    -o-box-shadow: inset 0 0 0 2px #00890d;
+}
+
+.btn.btn-primary-del-link {
+    border-radius: 5px;
+    -moz-box-shadow: inset 0 0 0 2px #1b073a;
+    -o-box-shadow: inset 0 0 0 2px #1b073a;
+    background-color: #f6b802;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.btn.btn-primary-del-link:hover {
+    color: #f6b802;
+    background-color: white;
+    -webkit-box-shadow: inset 0 0 0 2px #f6b802;
+    -moz-box-shadow: inset 0 0 0 2px #f6b802;
+    -o-box-shadow: inset 0 0 0 2px #f6b802;
 }

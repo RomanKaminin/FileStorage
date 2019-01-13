@@ -3,7 +3,7 @@ from .forms import UserRegistrationForm, UserLoginForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import auth_logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DeleteView, CreateView
+from django.views.generic import ListView
 from django.views.generic.edit import FormView
 from .mixin import AjaxRegistrationMixin, AjaxLoginMixin
 from .models import File
@@ -19,6 +19,21 @@ from django.contrib.auth.decorators import login_required
 def delete_handler(request, pk):
     file = File.objects.get(pk=pk)
     file.delete()
+    return redirect('lk')
+
+
+def create_link_handler(request, pk):
+    file_instance = File.objects.get(pk=pk)
+    domain = request.build_absolute_uri('/')[:-1]
+    file_instance.public_link = domain + file_instance.file.url
+    file_instance.save()
+    return redirect('lk')
+
+
+def del_link_handler(request, pk):
+    file_instance = File.objects.get(pk=pk)
+    file_instance.public_link = ''
+    file_instance.save()
     return redirect('lk')
 
 

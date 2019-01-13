@@ -9,20 +9,22 @@
                     <a class="btn btn-primary-send float-l rates__btn">{% trans "Ваши файлы" %}</a>
                     <a style="margin-right: 0px;" href="{% url 'add-file' %}" class="btn btn-primary float-r btn--font-weight">{% trans "+ Добавить файл" %}</a>
                 </div>
+            {% if page_objects %}
             <div class="row">
                 <form class="search-input"  style="display: flex; margin: 30px 0px 10px;" id="filter-form" action="{% url 'lk' %}" method="GET">
                     {{ filter.form.as_p }}
                     <button type="submit" class="btn btn-info btn-gray-filter">{% trans "Найти" %}</button>
                 </form>
             </div>
+            {% endif %}
                 <div class="table">
                     <div class="row header">
                         <ul>
 
                             <li><a href="#0">{% trans "Файл" %}</a></li>
-{#                            <li><a href="#0">{% trans "Публичная ссылка" %}</a></li>#}
+                            <li><a href="#0">{% trans "Публичная ссылка" %}</a></li>
                             <li><a href="#0">{% trans "Дата загрузки" %}</a></li>
-                            <li><a href="#0">{% trans "Действия" %}</a></li>
+                            <li style="width: 184px;"><a href="#0">{% trans "Действия" %}</a></li>
 
                         </ul>
                     </div>
@@ -31,12 +33,18 @@
                             <div class="row">
                                 <ul>
                                     <li>{{ file.title }}</li>
-{#                                    <li></li>#}
+                                    {% if file.public_link is not None %}
+                                    <li>{{ file.public_link }}</li>
+                                    {% else %}
+                                    <li></li>
+                                    {% endif %}
                                     <li>{{ file.date|date:"d M Y" }}</li>
-                                    <li>
+                                    <li style="width: 184px;">
                                         {% url "down-file" pk=file.id as fallback_url %}
                                         <a class="btn btn-primary-down btn-small" href="{% firstof file.file|public_download_url  %}">Скачать</a>
                                         <a class="btn btn-primary-del btn-small" href="{% url 'del-file' file.id %}">Удалить</a>
+                                        <a class="btn btn-primary-pub-cr btn-small" href="{% url 'create-link' file.id %}">Создать ссылку</a>
+                                        <a class="btn btn-primary-del-link btn-small" href="{% url 'del-link' file.id %}">Удалить ссылку</a>
                                     </li>
                                 </ul>
                             </div>

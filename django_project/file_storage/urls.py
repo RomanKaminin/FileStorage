@@ -18,16 +18,16 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from app.views import (HomePageView, LoginView,
-                       logout_user, RegisterView,
-                       PersonalArea, upload_handler,
-                       download_handler, delete_handler
+                       logout_user, RegisterView, PersonalArea, upload_handler,
+                       download_handler, delete_handler, create_link_handler,
+                       del_link_handler
                        )
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', HomePageView.as_view(),name='home'),
+    url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout$', logout_user, name='logout'),
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
@@ -35,6 +35,8 @@ urlpatterns = [
     url(r'^lk/add_file$', upload_handler, name='add-file'),
     url(r'^lk/(?P<pk>[0-9]+)/$', download_handler, name='down-file'),
     url(r'^lk/del_file/(?P<pk>[0-9]+)/$', delete_handler, name='del-file'),
+    url(r'^lk/create_link/(?P<pk>[0-9]+)/$', create_link_handler, name='create-link'),
+    url(r'^lk/delete_link/(?P<pk>[0-9]+)/$', del_link_handler, name='del-link'),
 
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
