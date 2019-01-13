@@ -1,0 +1,272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-13 15:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/filtersets.py:14
+msgid "Имя файла"
+msgstr "File name"
+
+#: app/forms.py:22 app/forms.py:25
+msgid "Username"
+msgstr "Username"
+
+#: app/forms.py:34 app/forms.py:64
+msgid "Email"
+msgstr "Email"
+
+#: app/forms.py:42 app/forms.py:72
+msgid "Password"
+msgstr "Password"
+
+#: app/forms.py:51
+msgid "Sorry, user with that username already exist."
+msgstr "Sorry, user with that username already exist."
+
+#: app/forms.py:54
+msgid "Sorry, that email already exist."
+msgstr "Sorry, that email already exist."
+
+#: app/forms.py:82
+msgid "Incorrect password."
+msgstr "Incorrect password."
+
+#: app/forms.py:84
+msgid "User with this e-mail is blocked."
+msgstr "User with this e-mail is blocked."
+
+#: app/forms.py:86
+msgid "User with this e-mail does not exist."
+msgstr "User with this e-mail does not exist."
+
+#: templates/base.html:16 templates/home.html:16
+msgid "Главная"
+msgstr "Main"
+
+#: templates/base.html:19 templates/home.html:18
+#: templates/registration/login.html:7 templates/registration/login.html:21
+#: templates/registration/registration.html:32
+msgid "Войти"
+msgstr "Login"
+
+#: templates/base.html:21 templates/home.html:20
+msgid "Личный кабинет"
+msgstr "Personal Area"
+
+#: templates/base.html:22 templates/home.html:21
+msgid "Выйти"
+msgstr "Logout"
+
+#: templates/lk.html:9
+msgid "Ваши файлы"
+msgstr "Your files"
+
+#: templates/lk.html:10 templates/upload.html:11
+msgid "+ Добавить файл"
+msgstr "+ Add file"
+
+#: templates/lk.html:16
+msgid "Найти"
+msgstr "Find"
+
+#: templates/lk.html:24
+msgid "Файл"
+msgstr "File"
+
+#: templates/lk.html:25
+msgid "Публичная ссылка"
+msgstr "Public link"
+
+#: templates/lk.html:26
+msgid "Дата загрузки"
+msgstr "Date of download"
+
+#: templates/lk.html:27
+msgid "Действия"
+msgstr "Actions"
+
+#: templates/lk.html:44
+msgid "Скачать"
+msgstr "Download"
+
+#: templates/lk.html:45
+msgid "Удалить"
+msgstr "Delete"
+
+#: templates/lk.html:46
+msgid "Создать ссылку"
+msgstr "Create link"
+
+#: templates/lk.html:47
+msgid "Удалить ссылку"
+msgstr "Delete link"
+
+#: templates/registration/login.html:29
+msgid "Ещё не зарегистрированы?"
+msgstr "Not a member yet?"
+
+#: templates/registration/login.html:29
+#: templates/registration/registration.html:7
+msgid "Регистрация"
+msgstr "Registration"
+
+#: templates/registration/login.html:30
+msgid "Забыли пароль?"
+msgstr "Forgot your password?"
+
+#: templates/registration/password_reset_complete.html:10
+msgid "Ваш пароль был сброшен! Теперь вы можете "
+msgstr "Your password has been reset! Now you can"
+
+#: templates/registration/password_reset_complete.html:11
+msgid "войти"
+msgstr "login"
+
+#: templates/registration/password_reset_complete.html:12
+msgid "в систему."
+msgstr "in system."
+
+#: templates/registration/password_reset_confirm.html:10
+msgid "Пожалуйста дважды введите новый пароль."
+msgstr "Please enter the new password twice."
+
+#: templates/registration/password_reset_confirm.html:16
+msgid "Новый пароль:"
+msgstr "New password"
+
+#: templates/registration/password_reset_confirm.html:21
+msgid "Подтвердите пароль:"
+msgstr "Confirm the password:"
+
+#: templates/registration/password_reset_confirm.html:27
+msgid "Изменить пароль"
+msgstr "Change the password"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Неудачный сброс пароля"
+msgstr "Password reset failed"
+
+#: templates/registration/password_reset_confirm.html:33
+msgid "Ссылка на сброс пароля недействительна,"
+msgstr "Password reset link is invalid,"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid "возможно, потому, что она уже использованна."
+msgstr "perhaps because it is already used."
+
+#: templates/registration/password_reset_confirm.html:35
+msgid "Пожалуйста, запросите новый сброс пароля."
+msgstr "Please request a new password reset."
+
+#: templates/registration/password_reset_done.html:8
+msgid ""
+"Мы отправили вам по электронной почте инструкции по настройке пароля на "
+"указанный вами адрес электронной почты."
+msgstr ""
+"We emailed you instructions for setting the password to your email address."
+
+#: templates/registration/password_reset_done.html:9
+msgid "Вы должны получить его в ближайшее время."
+msgstr "You should get it soon."
+
+#: templates/registration/password_reset_done.html:12
+msgid "На главную"
+msgstr "To main"
+
+#: templates/registration/password_reset_email.html:3
+msgid "Здравствуйте, "
+msgstr "Hello,"
+
+#: templates/registration/password_reset_email.html:5
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Вы получили это письмо потому, что вы (либо кто-то, выдающий себя за вас) "
+#| "попросили выслать новый\n"
+#| "пароль к вашей учётной записи на сайте example-file-storage.  Если вы не "
+#| "просили выслать пароль, то не обращайте внимания на это письмо.\n"
+#| "\n"
+msgid ""
+"\n"
+"\n"
+"Вы получили это письмо потому, что вы (либо кто-то, выдающий себя за вас) "
+"попросили выслать новый\n"
+"пароль к вашей учётной записи на сайте %(domain)s.  Если вы не просили "
+"выслать пароль, то не обращайте внимания на это письмо.\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"You received this letter because you (or someone posing as you)asked to send "
+"a new onepassword for your account on the example-file-storage. If you did "
+"not asksend the password, then do not pay attention to this letter.\n"
+
+#: templates/registration/password_reset_email.html:12
+msgid ""
+"\n"
+"Чтобы сбросить пароль, пожалуйста, нажмите на следующую ссылку, или "
+"скопируйте и вставьте ее\n"
+"в ваш веб-браузер:\n"
+msgstr ""
+"\n"
+"To reset your password, please click the following link, orcopy and paste "
+"it\n"
+"to your web browser:\n"
+
+#: templates/registration/password_reset_email.html:19
+msgid "Ваше имя пользователя, в случае, если вы забыли:"
+msgstr "Your username, in case you forgot:"
+
+#: templates/registration/password_reset_email.html:22
+msgid "Best regards"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:23
+msgid "Management"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:9
+msgid ""
+"Пожалуйста, укажите свой адрес электронной почты, чтобы получить инструкции "
+"по его сбросу."
+msgstr "Please provide your email address for instructions.to reset it."
+
+#: templates/registration/password_reset_form.html:16
+msgid "Сбросить пароль"
+msgstr "Reset the password"
+
+#: templates/registration/registration.html:24
+msgid "Зарегистрироваться"
+msgstr "Registration"
+
+#: templates/registration/registration.html:32
+msgid "Уже зарегистрированы?"
+msgstr "Already a member?"
+
+#: templates/start.html:8
+msgid "Cервис хранения файлов"
+msgstr "File Storage Service"
+
+#: templates/start.html:10
+msgid "Роман Каминин"
+msgstr "Roman Kaminin"
+
+#: templates/upload/upload.html:13
+msgid "Загрузить"
+msgstr "Upload"

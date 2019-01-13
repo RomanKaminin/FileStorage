@@ -10,8 +10,7 @@
               {% csrf_token %}
               {% render_upload_data upload_data %}
               {{ form }}
-              <input type="submit" class="btn btn-primary btn--font-weight" value="Загрузить" style="position: absolute;padding: 15px;margin-left;margin-left: 10px;" />
-{#                <button value="Upload" class="btn btn-primary float-r btn--font-weight" type="submit">{% trans "+ Добавить файл" %}</button>#}
+              <input type="submit" class="btn btn-primary btn--font-weight" value="{% trans "Загрузить" %}" style="position: absolute;padding: 15px;margin-left;margin-left: 10px;" />
             </form>
         </div>
         </div>

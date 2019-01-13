@@ -1,0 +1,78 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$Rc8yL5aVtxuZ$9uHoew7YhfjUgEypEo3Acj0lO8mzBzw9XBqUdrlyb9g=",
+        "last_login": "2019-01-13T16:04:42.624Z",
+        "is_superuser": false,
+        "username": "user1",
+        "first_name": "",
+        "last_name": "",
+        "email": "user1@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-01-03T16:14:26.462Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$mNVbsr5L9Z0d$Kn6XnbBmBjyGzjl8Cmwz6I0Fv4+hLWASDU20H8jJq5g=",
+        "last_login": "2019-01-13T16:06:28.521Z",
+        "is_superuser": false,
+        "username": "lena",
+        "first_name": "",
+        "last_name": "",
+        "email": "lena@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-01-04T19:26:53.246Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$GgylU1d4dkMG$IVPYBWs0JY6iMMH8XizeTxa2VR5bXqIgiD2xTf1Ufvk=",
+        "last_login": "2019-01-13T15:58:15.522Z",
+        "is_superuser": false,
+        "username": "User2",
+        "first_name": "",
+        "last_name": "",
+        "email": "user2@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-01-13T15:58:14.879Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "app.file",
+    "pk": 62,
+    "fields": {
+        "title": "doc2.docx",
+        "upload_by": 3,
+        "date": "2019-01-13T15:59:59.633Z",
+        "public_link": "http://127.0.0.1:8000/media/uploads/2019/doc2.docx",
+        "file": "uploads/2019/doc2.docx"
+    }
+},
+{
+    "model": "app.file",
+    "pk": 63,
+    "fields": {
+        "title": "doc1.docx",
+        "upload_by": 1,
+        "date": "2019-01-13T16:05:01.084Z",
+        "public_link": "http://127.0.0.1:8000/media/uploads/2019/doc1.docx",
+        "file": "uploads/2019/doc1.docx"
+    }
+}
+]

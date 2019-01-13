@@ -41,10 +41,10 @@
                                     <li>{{ file.date|date:"d M Y" }}</li>
                                     <li style="width: 184px;">
                                         {% url "down-file" pk=file.id as fallback_url %}
-                                        <a class="btn btn-primary-down btn-small" href="{% firstof file.file|public_download_url  %}">Скачать</a>
-                                        <a class="btn btn-primary-del btn-small" href="{% url 'del-file' file.id %}">Удалить</a>
-                                        <a class="btn btn-primary-pub-cr btn-small" href="{% url 'create-link' file.id %}">Создать ссылку</a>
-                                        <a class="btn btn-primary-del-link btn-small" href="{% url 'del-link' file.id %}">Удалить ссылку</a>
+                                        <a class="btn btn-primary-down btn-small" href="{% firstof file.file|public_download_url  %}">{% trans "Скачать" %}</a>
+                                        <a class="btn btn-primary-del btn-small" href="{% url 'del-file' file.id %}">{% trans "Удалить" %}</a>
+                                        <a class="btn btn-primary-pub-cr btn-small" href="{% url 'create-link' file.id %}">{% trans "Создать ссылку" %}</a>
+                                        <a class="btn btn-primary-del-link btn-small" href="{% url 'del-link' file.id %}">{% trans "Удалить ссылку" %}</a>
                                     </li>
                                 </ul>
                             </div>
