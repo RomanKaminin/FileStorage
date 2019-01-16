@@ -13,7 +13,7 @@ services:
 
   django_project:
     restart: always
-    command: 'bash -c "python3 manage.py migrate && python3 ./manage.py migrate app &&
+    command: 'bash -c "python3 manage.py migrate &&
           python3 ./manage.py makemigrations app && python3 ./manage.py loaddata test_data.json &&
           python3 ./manage.py compilemessages && python3 manage.py runserver 0.0.0.0:8000"'
     build:
