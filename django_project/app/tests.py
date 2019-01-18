@@ -1,5 +1,5 @@
 import unittest
-from django_project.app.models import File
+from app.models import File
 from django.contrib.auth.models import User
 
 
@@ -12,10 +12,10 @@ class FileModelTest(unittest.TestCase):
         )
         self.file = File.objects.create(
             title="macro.txt",
-            upload_by=self.user,
+            upload_by=self.user.id,
             date="2019-01-18 12:19:52.480046",
             public_link=None,
-            file="uploads/2019/test.bin",
+            file="uploads/2019/doc1.docx",
             is_deleted=False,
             md5sum='e7df7cd2ca07f4f1ab415d457a6e1c13',
         )
