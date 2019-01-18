@@ -1,5 +1,4 @@
 from django.views.generic.base import TemplateView
-from .forms import UserRegistrationForm, UserLoginForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import auth_logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,7 +6,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import FormView
 from .mixin import AjaxRegistrationMixin, AjaxLoginMixin
 from .models import File
-from .forms import FileForm
+from .forms import FileForm, UserRegistrationForm, UserLoginForm
 from .helpers import paginator_work
 from .filtersets import FileFilter
 from urllib.parse import urlencode
@@ -18,8 +17,8 @@ from django.contrib.auth.decorators import login_required
 
 def delete_handler(request, pk):
     deleted_file = File.objects.get(pk=pk)
-    file_instance = File.objects.filter(file=deleted_file.file)
-    if file_instance.exists():
+    files_instance = File.objects.filter(file=deleted_file.file, is_deleted=False)
+    if files_instance.exists():
         deleted_file.is_deleted = True
         deleted_file.save()
     else:
