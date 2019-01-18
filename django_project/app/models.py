@@ -10,19 +10,19 @@ class UploadFileSystemStorage(FileSystemStorage):
         return name
 
     def _save(self, name, content):
-        name_md5 = self.md5_for_file(content.chunks())
+        name_md5 = md5_for_file(content.chunks())
         try:
-            exist_file = File.objects.filter(md5sum=name_md5)
-            exist_file = exist_file.earliest('date')
+            exist_file = File.objects.filter(md5sum=name_md5).earliest('date')
             return str(exist_file.file)
         except File.DoesNotExist:
             return super(UploadFileSystemStorage, self)._save(name, content)
 
-    def md5_for_file(self, chunks):
-        md5 = hashlib.md5()
-        for data in chunks:
-            md5.update(data)
-        return md5.hexdigest()
+
+def md5_for_file(chunks):
+    md5 = hashlib.md5()
+    for data in chunks:
+        md5.update(data)
+    return md5.hexdigest()
 
 
 class File(models.Model):

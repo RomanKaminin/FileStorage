@@ -17,12 +17,8 @@ from django.contrib.auth.decorators import login_required
 
 def delete_handler(request, pk):
     deleted_file = File.objects.get(pk=pk)
-    files_instance = File.objects.filter(file=deleted_file.file, is_deleted=False)
-    if files_instance.exists():
-        deleted_file.is_deleted = True
-        deleted_file.save()
-    else:
-        deleted_file.delete()
+    deleted_file.is_deleted = True
+    deleted_file.save()
     return redirect('lk')
 
 
