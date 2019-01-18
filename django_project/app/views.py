@@ -17,8 +17,13 @@ from django.contrib.auth.decorators import login_required
 
 
 def delete_handler(request, pk):
-    file = File.objects.get(pk=pk)
-    file.delete()
+    deleted_file = File.objects.get(pk=pk)
+    file_instance = File.objects.filter(file=deleted_file.file)
+    if file_instance.exists():
+        deleted_file.is_deleted = True
+        deleted_file.save()
+    else:
+        deleted_file.delete()
     return redirect('lk')
 
 
@@ -88,7 +93,7 @@ class PersonalArea(LoginRequiredMixin, ListView):
     filter_class = FileFilter
 
     def get_context_data(self, **kwargs):
-        qs = self.model.objects.filter(upload_by=self.request.user.id)
+        qs = self.model.objects.filter(upload_by=self.request.user.id, is_deleted=False)
         if qs.exists():
             filtered = self.filter_class(self.request.GET, queryset=qs)
             params = self.request.GET.copy()
