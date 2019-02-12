@@ -175,4 +175,3 @@ SERVE_FILE_BACKEND = 'filetransfers.backends.default.serve_file'
 PUBLIC_DOWNLOADS_URL_BASE = '/downloads/'
 PUBLIC_DOWNLOAD_URL_BACKEND = 'filetransfers.backends.url.public_download_url'
 
-

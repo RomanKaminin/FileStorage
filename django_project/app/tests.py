@@ -2,7 +2,6 @@ import unittest
 from app.models import File
 from django.contrib.auth.models import User
 
-
 class FileModelTest(unittest.TestCase):
     def create_file(self):
         self.user = User.objects.create_user(
