@@ -19,22 +19,22 @@ def delete_handler(request, pk):
     deleted_file = File.objects.get(pk=pk)
     deleted_file.is_deleted = True
     deleted_file.save()
-    return redirect('lk')
+    return redirect("lk")
 
 
 def create_link_handler(request, pk):
     file_instance = File.objects.get(pk=pk)
-    domain = request.build_absolute_uri('/')[:-1]
+    domain = request.build_absolute_uri("/")[:-1]
     file_instance.public_link = domain + file_instance.file.url
     file_instance.save()
-    return redirect('lk')
+    return redirect("lk")
 
 
 def del_link_handler(request, pk):
     file_instance = File.objects.get(pk=pk)
-    file_instance.public_link = ''
+    file_instance.public_link = ""
     file_instance.save()
-    return redirect('lk')
+    return redirect("lk")
 
 
 def download_handler(request, pk):
@@ -42,22 +42,25 @@ def download_handler(request, pk):
     return public_download_url(request, upload.file)
 
 
-@login_required(login_url='login')
+@login_required(login_url="login")
 def upload_handler(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = FileForm(request.POST, request.FILES)
-        newfile = File(file=request.FILES['file'])
-        upload_url, upload_data = prepare_upload(request, 'add_file')
+        newfile = File(file=request.FILES["file"])
+        upload_url, upload_data = prepare_upload(request, "add_file")
         form.fields["upload_by"].initial = request.user.id
         form.fields["public_link"].initial = upload_url
         form.fields["title"].initial = newfile.file.name
         form.save()
-        return redirect('lk')
+        return redirect("lk")
 
-    upload_url, upload_data = prepare_upload(request, 'add_file')
+    upload_url, upload_data = prepare_upload(request, "add_file")
     form = FileForm()
-    return render(request, 'upload/upload.html',
-        {'form': form, 'upload_url': upload_url, 'upload_data': upload_data})
+    return render(
+        request,
+        "upload/upload.html",
+        {"form": form, "upload_url": upload_url, "upload_data": upload_data},
+    )
 
 
 class HomePageView(TemplateView):
@@ -70,19 +73,19 @@ class HomePageView(TemplateView):
 
 class RegisterView(AjaxRegistrationMixin, FormView):
     form_class = UserRegistrationForm
-    template_name = 'registration/registration.html'
-    success_url = '/lk/'
+    template_name = "registration/registration.html"
+    success_url = "/lk/"
 
 
 class LoginView(AjaxLoginMixin, FormView):
     form_class = UserLoginForm
-    template_name = 'registration/login.html'
-    success_url = '/lk/'
+    template_name = "registration/login.html"
+    success_url = "/lk/"
 
 
 class PersonalArea(LoginRequiredMixin, ListView):
-    login_url = '/login/'
-    redirect_field_name = 'redirect_to'
+    login_url = "/login/"
+    redirect_field_name = "redirect_to"
     template_name = "lk.html"
     model = File
     filter_class = FileFilter
@@ -92,22 +95,24 @@ class PersonalArea(LoginRequiredMixin, ListView):
         if qs.exists():
             filtered = self.filter_class(self.request.GET, queryset=qs)
             params = self.request.GET.copy()
-            if 'page' in params:
-                del params['page']
+            if "page" in params:
+                del params["page"]
             list_groups = []
             for g in self.request.user.groups.all():
                 list_groups.append(g.name)
 
             qs_with_filters = filtered.qs
-            paginator = paginator_work(self.request, qs_with_filters.order_by('-date'), 5)
+            paginator = paginator_work(
+                self.request, qs_with_filters.order_by("-date"), 5
+            )
             params = self.request.GET.copy()
-            if 'page' in params:
-                del params['page']
+            if "page" in params:
+                del params["page"]
             context = {
-                'paginator': paginator['paginator'],
-                'page_objects': paginator['page_objects'],
-                'params': urlencode(params),
-                'filter': filtered,
+                "paginator": paginator["paginator"],
+                "page_objects": paginator["page_objects"],
+                "params": urlencode(params),
+                "filter": filtered,
             }
         else:
             context = {}
@@ -116,5 +121,4 @@ class PersonalArea(LoginRequiredMixin, ListView):
 
 def logout_user(request):
     auth_logout(request)
-    return HttpResponseRedirect('/')
-
+    return HttpResponseRedirect("/")

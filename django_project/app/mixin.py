@@ -6,10 +6,9 @@ from django.contrib.auth import authenticate, login
 
 
 class AjaxRegistrationMixin(object):
-
     def form_invalid(self, form):
         if self.request.is_ajax():
-            response_data = {"form": form.errors }
+            response_data = {"form": form.errors}
             return JsonResponse(response_data, status=400)
         else:
             return super(AjaxRegistrationMixin, self).form_invalid(form)
@@ -17,30 +16,28 @@ class AjaxRegistrationMixin(object):
     def form_valid(self, form):
         validated_data = form.clean()
         user = get_user_model().objects.create(
-            username=validated_data['username'],
-            email=validated_data['email']
+            username=validated_data["username"], email=validated_data["email"]
         )
-        user.set_password(validated_data['password'])
+        user.set_password(validated_data["password"])
         user.save()
         Token.objects.create(user=user)
         user_auth = authenticate(
-            username=validated_data['username'],
-            password=validated_data['password']
+            username=validated_data["username"], password=validated_data["password"]
         )
         login(self.request, user_auth)
         auth_login(self.request, user_auth)
 
         if self.request.is_ajax():
-            response_data = {"form": 'ok'}
+            response_data = {"form": "ok"}
             return JsonResponse(response_data, status=200)
         else:
             return super(AjaxRegistrationMixin, self).form_valid(form)
 
-class AjaxLoginMixin(object):
 
+class AjaxLoginMixin(object):
     def form_invalid(self, form):
         if self.request.is_ajax():
-            response_data = {"form": form.errors }
+            response_data = {"form": form.errors}
             return JsonResponse(response_data, status=400)
         else:
             return super(AjaxLoginMixin, self).form_invalid(form)
@@ -49,7 +46,7 @@ class AjaxLoginMixin(object):
         user = form.login(self.request)
         login(self.request, user)
         if self.request.is_ajax():
-            response_data = {"form": 'ok'}
+            response_data = {"form": "ok"}
             return JsonResponse(response_data, status=200)
         else:
             return super(AjaxLoginMixin, self).form_valid(form)

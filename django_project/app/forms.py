@@ -6,13 +6,13 @@ from .models import File
 
 
 class FileForm(forms.ModelForm):
-    upload_by = forms.IntegerField(widget=forms.HiddenInput(),disabled=True)
+    upload_by = forms.IntegerField(widget=forms.HiddenInput(), disabled=True)
     public_link = forms.CharField(widget=forms.HiddenInput(), disabled=True)
     title = forms.CharField(widget=forms.HiddenInput(), disabled=True)
     file = forms.FileField()
 
     class Meta:
-        fields = ('file', 'upload_by', 'title')
+        fields = ("file", "upload_by", "title")
         model = File
 
 
@@ -21,31 +21,25 @@ class UserRegistrationForm(forms.Form):
         required=True,
         label=_("Username"),
         max_length=32,
-        widget=forms.TextInput(
-            attrs={'placeholder': _("Username")}
-        )
+        widget=forms.TextInput(attrs={"placeholder": _("Username")}),
     )
 
     email = forms.CharField(
         required=True,
-        label='Email',
+        label="Email",
         max_length=32,
-        widget=forms.TextInput(
-            attrs={'placeholder': _("Email")}
-        )
+        widget=forms.TextInput(attrs={"placeholder": _("Email")}),
     )
     password = forms.CharField(
         required=True,
-        label='Password',
+        label="Password",
         max_length=32,
-        widget=forms.PasswordInput(
-            attrs={'placeholder': _("Password")}
-        )
+        widget=forms.PasswordInput(attrs={"placeholder": _("Password")}),
     )
 
     def clean(self):
-        username = self.cleaned_data.get('username')
-        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get("username")
+        email = self.cleaned_data.get("email")
         if User.objects.filter(username=username).exists():
             raise forms.ValidationError(
                 _("Sorry, user with that username already exist.")
@@ -58,24 +52,20 @@ class UserRegistrationForm(forms.Form):
 class UserLoginForm(forms.Form):
     email = forms.CharField(
         required=True,
-        label='Email',
+        label="Email",
         max_length=32,
-        widget=forms.TextInput(
-            attrs={'placeholder': _("Email")}
-        )
+        widget=forms.TextInput(attrs={"placeholder": _("Email")}),
     )
     password = forms.CharField(
         required=True,
-        label='Password',
+        label="Password",
         max_length=32,
-        widget=forms.PasswordInput(
-            attrs={'placeholder': _("Password")}
-        )
+        widget=forms.PasswordInput(attrs={"placeholder": _("Password")}),
     )
 
     def clean(self):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
+        email = self.cleaned_data.get("email")
+        password = self.cleaned_data.get("password")
         try:
             user = User.objects.get(email=email)
             if not user.check_password(password):
@@ -87,8 +77,8 @@ class UserLoginForm(forms.Form):
         return self.cleaned_data
 
     def login(self, request):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
+        email = self.cleaned_data.get("email")
+        password = self.cleaned_data.get("password")
         user_obj = User.objects.get(email=email)
         user = authenticate(username=user_obj.username, password=password)
         return user
