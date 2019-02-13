@@ -1,8 +1,7 @@
-from django.http import JsonResponse
-from django.contrib.auth import get_user_model
-from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.views import auth_login
-from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
+from rest_framework.authtoken.models import Token
 
 
 class AjaxRegistrationMixin(object):

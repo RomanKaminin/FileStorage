@@ -1,18 +1,20 @@
-from django.views.generic.base import TemplateView
-from django.http import HttpResponseRedirect
-from django.contrib.auth.views import auth_logout
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
-from django.views.generic.edit import FormView
-from .mixin import AjaxRegistrationMixin, AjaxLoginMixin
-from .models import File
-from .forms import FileForm, UserRegistrationForm, UserLoginForm
-from .helpers import paginator_work
-from .filtersets import FileFilter
 from urllib.parse import urlencode
-from django.shortcuts import render, redirect, get_object_or_404
-from filetransfers.api import prepare_upload, public_download_url
+
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import auth_logout
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.generic import ListView
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
+from filetransfers.api import prepare_upload, public_download_url
+
+from .filtersets import FileFilter
+from .forms import FileForm, UserLoginForm, UserRegistrationForm
+from .helpers import paginator_work
+from .mixin import AjaxLoginMixin, AjaxRegistrationMixin
+from .models import File
 
 
 def delete_handler(request, pk):

@@ -1,6 +1,7 @@
 import hashlib
-from django.db import models
+
 from django.core.files.storage import FileSystemStorage
+from django.db import models
 
 
 class UploadFileSystemStorage(FileSystemStorage):
@@ -31,7 +32,9 @@ class File(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True)
     public_link = models.CharField(max_length=300, null=True)
     file = models.FileField(
-        upload_to="uploads/%Y/", default=None, storage=UploadFileSystemStorage()
+        upload_to="uploads/%Y/",
+        default=None,
+        storage=UploadFileSystemStorage()
     )
     is_deleted = models.BooleanField(blank=True, default=False)
     md5sum = models.CharField(max_length=36, blank=True)
