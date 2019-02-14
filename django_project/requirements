@@ -5,8 +5,8 @@ django-allauth>=0.24.1
 six==1.9.0
 psycopg2==2.7.3
 django-filter==2.0.0
-isort
-flake8
-black
-pre-commit
+isort==4.3.4
+flake8==3.6.0
+black==18.9b0
+pre-commit==1.12.0
 
